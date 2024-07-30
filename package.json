@@ -2,10 +2,6 @@
     "name": "rnstarter",
     "version": "0.0.1",
     "description": "React Native Template",
-    "files": [
-        "template",
-        "template.config.js"
-      ],
     "repository": "https://SaviantDev@dev.azure.com/SaviantDev/React%20Native%20Starter/_git/RNStarter",
     "author": "Yashwanth Aras JV",
     "license": "MIT"
