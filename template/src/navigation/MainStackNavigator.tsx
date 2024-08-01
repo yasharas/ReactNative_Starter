@@ -19,10 +19,8 @@ export default function MainStackNavigator(): React.JSX.Element {
       <Stack.Navigator
         initialRouteName="Drawer"
         screenOptions={{
-          header: () => (
-            <View style={{backgroundColor: 'white', height: 60}}></View>
-          ),
-          headerTitle: '',
+          headerShown: false,
+          gestureEnabled: false,
         }}>
         <Stack.Screen name="Drawer" component={MainDrawerNavigator} />
         <Stack.Screen name="ScreenTwo" component={ScreenTwo} />

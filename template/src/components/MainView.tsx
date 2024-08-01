@@ -1,10 +1,11 @@
-import {SafeAreaView, View} from 'react-native';
+import {Platform, SafeAreaView, StatusBar, View} from 'react-native';
 import Navbar from './Navbar';
+import Colors from '../styles/Colors';
 
 export type MainViewProps = {
   children?: any;
   leftIconVisible?: Boolean;
-  leftIconPressed: any;
+  leftIconPressed?: any;
   rightIcon?: React.JSX.Element;
   rightIconPressed?: any;
   screenTitle: string;
@@ -18,13 +19,20 @@ const MainView = ({
   rightIcon,
   rightIconPressed = () => {},
   screenTitle = 'Add Screen Title',
-  mainView,
 }: MainViewProps) => {
   return (
-    <SafeAreaView style={{flex: 1,}}>
-      <Navbar screenTitle={screenTitle} leftIconVisible={leftIconVisible} leftIconPressed={leftIconPressed} />
+    <>
+      {Platform.OS === 'android' && (
+        <StatusBar backgroundColor={Colors.primary} />
+      )}
+      <SafeAreaView style={{backgroundColor: Colors.primary}}></SafeAreaView>
+      <Navbar
+        screenTitle={screenTitle}
+        leftIconVisible={leftIconVisible}
+        leftIconPressed={leftIconPressed}
+      />
       {children}
-    </SafeAreaView>
+    </>
   );
 };
 

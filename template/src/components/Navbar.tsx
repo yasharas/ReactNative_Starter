@@ -1,4 +1,6 @@
 import {Button, Pressable, Text, View} from 'react-native';
+import Styles from '../styles/Styles';
+import Colors from '../styles/Colors';
 
 export type Props = {
   leftIconVisible?: Boolean;
@@ -16,16 +18,7 @@ const Navbar: React.FC<Props> = ({
   screenTitle = 'Add Screen Title',
 }) => {
   return (
-    <View
-      style={{
-        backgroundColor: 'red',
-        height: 60,
-        flexDirection: 'row',
-        width: '100%',
-        alignItems: 'stretch',
-        paddingHorizontal: 6,
-        paddingVertical: 4,
-      }}>
+    <View style={Styles.mainNavbar}>
       <View
         style={{
           width: '12%',
@@ -33,12 +26,14 @@ const Navbar: React.FC<Props> = ({
           alignItems: 'flex-start',
         }}>
         {leftIconVisible && (
-          <Button title="<" onPress={leftIconPressed}></Button>
+          <Pressable onPress={leftIconPressed}>
+            <Text style={Styles.navBarIcon}>{'<'}</Text>
+          </Pressable>
         )}
       </View>
       <View
         style={{width: '76%', justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{textAlign: 'center'}}>{screenTitle}</Text>
+        <Text style={Styles.navBarTitle}>{screenTitle}</Text>
       </View>
       <Pressable
         style={{width: '12%', justifyContent: 'center', alignItems: 'flex-end'}}
