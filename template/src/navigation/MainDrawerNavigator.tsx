@@ -1,11 +1,14 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import HomeTabNavigator from './HomeTabNavigator';
 import SettingsScreen from '../screens/SettingsScreen';
-import {SafeAreaView} from 'react-native';
+import MainTabNavigator from './MainTabNavigator';
 
 const Drawer = createDrawerNavigator();
 
-export default function DrawerNavigator() {
+/**
+ * 
+ * @returns Screens part of side drawer menu
+ */
+export default function MainDrawerNavigator() {
   return (
       <Drawer.Navigator
         initialRouteName="HomeStack"
@@ -13,7 +16,7 @@ export default function DrawerNavigator() {
           headerTransparent: true,
           headerTitle: '',
         }}>
-        <Drawer.Screen  name="HomeTab" component={HomeTabNavigator} />
+        <Drawer.Screen  name="HomeTab" component={MainTabNavigator} />
         <Drawer.Screen name="Settings" component={SettingsScreen} />
       </Drawer.Navigator>
   );

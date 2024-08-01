@@ -1,11 +1,21 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {Text, View, SafeAreaView} from 'react-native';
+import {RootStackParamList} from '../navigation/NavParamTypes';
+import Navbar from '../components/Navbar';
+import MainView from '../components/MainView';
 
-export default function ScreenThree(): React.JSX.Element {
+type Props = NativeStackScreenProps<RootStackParamList, 'ScreenThree'>;
+
+const ScreenThree = ({navigation}: Props) => {
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Welcome To Screen Three</Text>
+    <MainView
+      screenTitle="Screen Three"
+      leftIconPressed={() => navigation.goBack()}>
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <Text>This is screen three with view enclosed in Main View</Text>
       </View>
-    </SafeAreaView>
+    </MainView>
   );
-}
+};
+
+export default ScreenThree;

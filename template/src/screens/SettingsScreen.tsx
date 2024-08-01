@@ -1,9 +1,21 @@
 import { Text, View,SafeAreaView } from "react-native";
+import MainView from "../components/MainView";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigation/NavParamTypes";
 
-export default function SettingsScreen(): React.JSX.Element{
-    return <SafeAreaView>
-        <View>
-        <Text>Welcome To Settings</Text>
+type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
+
+const SettingsScreen = ({navigation}: Props) => {
+    return (
+        <MainView
+        screenTitle="Screen Three"
+        leftIconVisible={false}
+        leftIconPressed={() => navigation.goBack()}>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <Text>This is settings with view enclosed in Main View</Text>
         </View>
-    </SafeAreaView>
+      </MainView>
+    );
 }
+
+export default SettingsScreen;

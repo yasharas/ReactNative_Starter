@@ -1,11 +1,7 @@
-import {
-  Button,
-  Pressable,
-  Text,
-  View,
-} from 'react-native';
+import {Button, Pressable, Text, View} from 'react-native';
 
 export type Props = {
+  leftIconVisible?: Boolean;
   leftIconPressed: any;
   rightIcon?: React.JSX.Element;
   rightIconPressed?: any;
@@ -13,6 +9,7 @@ export type Props = {
 };
 
 const Navbar: React.FC<Props> = ({
+  leftIconVisible = true,
   leftIconPressed,
   rightIcon,
   rightIconPressed = () => {},
@@ -35,7 +32,9 @@ const Navbar: React.FC<Props> = ({
           justifyContent: 'center',
           alignItems: 'flex-start',
         }}>
-        <Button title="<" onPress={leftIconPressed}></Button>
+        {leftIconVisible && (
+          <Button title="<" onPress={leftIconPressed}></Button>
+        )}
       </View>
       <View
         style={{width: '76%', justifyContent: 'center', alignItems: 'center'}}>

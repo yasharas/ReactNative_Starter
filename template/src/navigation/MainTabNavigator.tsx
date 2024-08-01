@@ -1,8 +1,8 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import DashboardScreen from '../screens/DashboardScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import { Platform } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -11,11 +11,15 @@ const Tab = createBottomTabNavigator();
  * 
  * Contains screens included in the bottom tabs,
  */
-export default function HomeTabNavigator() {
+export default function MainTabNavigator() {
   return (
     <Tab.Navigator initialRouteName='Dashboard' screenOptions={{
-        headerTransparent: true,
-        headerTitle: ''
+        headerShown: false,
+        tabBarStyle: {
+            paddingTop: Platform.OS === 'android' ? 10 : 16,
+            paddingBottom: Platform.OS === 'android' ? 10 : 24,
+            height: Platform.OS === 'android' ? 70 : 80,
+          },
     }}>
       <Tab.Screen name="Dashboard" component={DashboardScreen}/>
       <Tab.Screen name="Profile" component={ProfileScreen} />

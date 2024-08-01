@@ -15,7 +15,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import MainNavigator from './src/navigation/MainNavigator';
+import MainStackNavigator from './src/navigation/MainStackNavigator';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -25,7 +25,7 @@ function App(): React.JSX.Element {
   
 
   return (
-    <MainNavigator />
+    <MainStackNavigator />
   );
 }
 
