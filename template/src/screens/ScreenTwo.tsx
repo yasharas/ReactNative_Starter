@@ -1,11 +1,24 @@
-import {Text, View, SafeAreaView} from 'react-native';
+import {Text, View, SafeAreaView, Image} from 'react-native';
+import Navbar from '../components/Navbar';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../navigation/NavParamTypes';
 
-export default function ScreenTwo(): React.JSX.Element {
+type Props = NativeStackScreenProps<RootStackParamList, 'ScreenTwo'>;
+
+const ScreenTwo = ({navigation}: Props) => {
+  let rightIconView = <Text>|||</Text>;
   return (
     <SafeAreaView>
+      <Navbar
+        screenTitle="Screen Two"
+        rightIcon={rightIconView}
+        leftIconPressed={() => navigation.goBack()}
+      />
       <View>
         <Text>Welcome To Screen Two</Text>
       </View>
     </SafeAreaView>
   );
-}
+};
+
+export default ScreenTwo;
