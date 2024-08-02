@@ -1,6 +1,7 @@
-import {Button, Pressable, Text, View} from 'react-native';
+import {Button, Image, Pressable, Text, View} from 'react-native';
 import Styles from '../styles/Styles';
 import Colors from '../styles/Colors';
+import Images from '../utils/Images';
 
 export type Props = {
   leftIconVisible?: Boolean;
@@ -27,7 +28,7 @@ const Navbar: React.FC<Props> = ({
         }}>
         {leftIconVisible && (
           <Pressable onPress={leftIconPressed}>
-            <Text style={Styles.navBarIcon}>{'<'}</Text>
+            <Image source={Images.backButton} style={Styles.navBarIcon}></Image>
           </Pressable>
         )}
       </View>

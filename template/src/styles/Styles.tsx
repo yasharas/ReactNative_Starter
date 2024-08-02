@@ -18,8 +18,8 @@ const Styles = StyleSheet.create({
   },
   navBarIcon: {
     color: Colors.white,
-    fontSize: fontHeights.FONT24,
-    textAlign: 'center',
+    height: 24,
+    width: 24,
   },
   mainViewContainer: {
     backgroundColor: Colors.white,
