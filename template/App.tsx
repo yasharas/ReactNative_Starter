@@ -5,9 +5,10 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+  LogBox,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -15,6 +16,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import i18n from './src/Localization/Localize';
+import * as RNLocalize from 'react-native-localize';
 import MainStackNavigator from './src/navigation/MainStackNavigator';
 
 type SectionProps = PropsWithChildren<{
@@ -23,6 +26,12 @@ type SectionProps = PropsWithChildren<{
 
 function App(): React.JSX.Element {
   
+  useEffect(() => {
+    const locale = RNLocalize.getLocales()[0].languageCode;
+    i18n.changeLanguage(locale);
+    LogBox.ignoreAllLogs();
+    
+  }, []);
 
   return (
     <MainStackNavigator />
