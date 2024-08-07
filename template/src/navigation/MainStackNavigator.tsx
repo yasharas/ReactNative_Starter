@@ -5,6 +5,8 @@ import MainDrawerNavigator from './MainDrawerNavigator';
 import {Image, View} from 'react-native';
 import ScreenTwo from '../screens/ScreenTwo';
 import ScreenThree from '../screens/ScreenThree';
+import MainTabNavigator from './MainTabNavigator';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,9 +24,10 @@ export default function MainStackNavigator(): React.JSX.Element {
           headerShown: false,
           gestureEnabled: false,
         }}>
-        <Stack.Screen name="Drawer" component={MainDrawerNavigator} />
+        <Stack.Screen name="Tabs" component={MainTabNavigator} />
         <Stack.Screen name="ScreenTwo" component={ScreenTwo} />
         <Stack.Screen name="ScreenThree" component={ScreenThree} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
