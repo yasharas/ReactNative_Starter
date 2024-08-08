@@ -10,18 +10,25 @@ import {
   Pressable,
   Modal,
   Platform,
+  FlatList,
 } from 'react-native';
 import {NativeStackScreenProps} from 'react-native-screens/lib/typescript/native-stack/types';
 import {RootStackParamList} from '../navigation/NavParamTypes';
 import Translate from '../hooks/Translate';
 import Colors from '../styles/Colors';
 import {fontHeight} from '../styles/Fonts';
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Images from '../utils/Images';
+import {useDispatch, useSelector} from 'react-redux';
+import {HomeSliceActions} from '../redux/slices/HomeSlice';
+import {AppDispatch, RootState} from '../redux/store';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 
 const DashboardScreen: React.FC<Props> = ({navigation}) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const {sampleData} = useSelector((state: RootState) => state.Home);
+  console.log('sample data', sampleData);
   const [visible, setVisible] = useState(false);
   const scale = useRef(new Animated.Value(0)).current;
   const options = [
@@ -29,7 +36,8 @@ const DashboardScreen: React.FC<Props> = ({navigation}) => {
       title: 'Settings',
       icon: Images.settings,
       action: () => {
-        navigation.navigate('Settings')},
+        navigation.navigate('Settings');
+      },
     },
     {
       title: 'Logout',
@@ -46,6 +54,10 @@ const DashboardScreen: React.FC<Props> = ({navigation}) => {
       easing: Easing.linear,
     }).start(() => to === 0 && setVisible(false));
   }
+
+  useEffect(() => {
+    dispatch(HomeSliceActions.getSampleDataAction());
+  }, []);
 
   return (
     <View style={{flex: 1}}>
@@ -108,15 +120,6 @@ const DashboardScreen: React.FC<Props> = ({navigation}) => {
                   </View>
                 </Pressable>
               ))}
-              <Text
-                style={{
-                  textAlign: 'center',
-                  padding: 10,
-                  fontWeight: '600',
-                  color: Colors.black,
-                }}>
-                Ver 1.5.0
-              </Text>
             </Animated.View>
           </SafeAreaView>
         </Modal>
@@ -134,23 +137,46 @@ const DashboardScreen: React.FC<Props> = ({navigation}) => {
         </View>
       </SafeAreaView>
       <View style={styles.bottomHalf}>
-        <Button
-          title="Navigate"
-          onPress={() => navigation.navigate('ScreenTwo')}></Button>
+        <View style={{padding: 10}}>
+          <Text style={styles.itemTextColor}>Sample List</Text>
+        </View>
+        <FlatList
+          data={sampleData}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => (
+            <Pressable onPress={() => navigation.navigate('ScreenTwo')}>
+              <Item
+                title={item.title}
+                completed={item.completed}
+                id={item.id}
+              />
+            </Pressable>
+          )}
+        />
       </View>
     </View>
   );
 };
+type ItemProps = {title: string; completed: boolean; id: number};
+
+const Item = ({title, completed, id}: ItemProps) => (
+  <View style={styles.item}>
+    <Text style={styles.itemTextColor}>{id}</Text>
+    <Text style={styles.itemTextColor}>{title}</Text>
+    <Text style={styles.itemTextColor}>{completed?.toString()}</Text>
+  </View>
+);
 
 export default DashboardScreen;
 
 const styles = StyleSheet.create({
   topHalf: {
-    flex: 0.8,
+    flex: 0.5,
     backgroundColor: Colors.primary,
   },
   bottomHalf: {
     flex: 1,
+    backgroundColor: Colors.white,
   },
   popup: {
     borderRadius: 6,
@@ -167,5 +193,20 @@ const styles = StyleSheet.create({
     top: Platform.OS === 'ios' ? 80 : 30,
     left: 20,
     justifyContent: 'flex-start',
+  },
+  item: {
+    backgroundColor: Colors.white,
+    padding: 6,
+    marginVertical: 8,
+    marginHorizontal: 10,
+    borderRadius: 2,
+    shadowColor: Colors.grey,
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 10,
+  },
+  itemTextColor: {
+    color: 'grey',
+    fontSize: fontHeight.FONT14,
   },
 });

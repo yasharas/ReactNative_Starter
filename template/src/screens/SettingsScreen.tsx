@@ -13,7 +13,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
 const SettingsScreen = ({navigation}: Props) => {
 
-  const [selectedLanguage, setSelectedLanguage] = useState(global.appLanguage);
+  const [selectedLanguage, setSelectedLanguage] = useState(global.appLanguage ?? 'en');
 
   const settingsList: any = [
     new DropdownModel('English', 'en'),
