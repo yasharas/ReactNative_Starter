@@ -1,5 +1,6 @@
 const UrlConstants = {
-    baseUrl: '',
+    baseUrl: 'https://jsonplaceholder.typicode.com/',
+    sampleEndpoint: 'todos'
 }
 
 export default UrlConstants;

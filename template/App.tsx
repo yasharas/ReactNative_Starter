@@ -5,36 +5,25 @@
  * @format
  */
 
-import React, { useEffect } from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  LogBox,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, {useEffect} from 'react';
+import {LogBox, StyleSheet} from 'react-native';
 import i18n from './src/Localization/Localize';
 import * as RNLocalize from 'react-native-localize';
 import MainStackNavigator from './src/navigation/MainStackNavigator';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+import {Provider} from 'react-redux';
+import { Store } from './src/redux/Store';
 
 function App(): React.JSX.Element {
-  
   useEffect(() => {
     const locale = RNLocalize.getLocales()[0].languageCode;
     i18n.changeLanguage(locale);
     LogBox.ignoreAllLogs();
-    
   }, []);
 
   return (
-    <MainStackNavigator />
+    <Provider store={Store}>
+      <MainStackNavigator />
+    </Provider>
   );
 }
 
