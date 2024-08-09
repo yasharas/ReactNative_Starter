@@ -1,5 +1,14 @@
 {
   "translation": {
-    "Hello": "Hello"
+    "Hello": "Hello!",
+    "Home": "Home",
+    "Settings": "Settings",
+    "Dashboard": "Dashboard",
+    "Profile": "Profile",
+    "Change Language": "Change Language",
+    "English": "English",
+    "Change Appearance": "Change Appearance",
+    "Dark": "Dark",
+    "Light": "Light"
   }
 }
