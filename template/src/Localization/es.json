@@ -1,5 +1,14 @@
 {
   "translation": {
-    "Hello": "Hola!"
+    "Hello": "Hola!",
+    "Home": "Hogar",
+    "Settings": "Ajustes",
+    "Dashboard": "Panel",
+    "Profile": "Perfil",
+    "Change Language": "Cambiar idioma",
+    "English": "Ingles",
+    "Change Appearance": "Cambiar apariencia",
+    "Dark": "Oscuro",
+    "Light": "Ligero"
   }
 }

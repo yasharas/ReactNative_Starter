@@ -5,6 +5,8 @@ const Colors = {
   white: '#FFFFFF',
   silver: '#D9E1E2',
   grey: '#bdbcbb',
+  lightGrey: '#edece8',
+  charcoal: '#585a5c',
 };
 
 export default Colors;

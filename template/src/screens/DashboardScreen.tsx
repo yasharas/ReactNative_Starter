@@ -28,7 +28,6 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 const DashboardScreen: React.FC<Props> = ({navigation}) => {
   const dispatch = useDispatch<AppDispatch>();
   const {sampleData} = useSelector((state: RootState) => state.Home);
-  console.log('sample data', sampleData);
   const [visible, setVisible] = useState(false);
   const scale = useRef(new Animated.Value(0)).current;
   const options = [
