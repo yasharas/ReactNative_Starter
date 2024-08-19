@@ -5,8 +5,6 @@ import {
   NavigationContainer,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import MainDrawerNavigator from './MainDrawerNavigator';
-import {Image, View} from 'react-native';
 import ScreenTwo from '../screens/ScreenTwo';
 import ScreenThree from '../screens/ScreenThree';
 import MainTabNavigator from './MainTabNavigator';
@@ -14,7 +12,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import {useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
 import {useEffect, useState} from 'react';
-import AppConstants from '../constants/AppConstants';
+import { AppConstants } from '../constants/AppConstants';
 
 const Stack = createNativeStackNavigator();
 
