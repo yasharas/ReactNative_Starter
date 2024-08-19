@@ -1,6 +1,7 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import HomeReducer from './slices/HomeSlice'
 import SettingsReducer from './slices/SettingsSlice'
+import BTPeripheralReducer from './slices/BTPeripheralSlice';
 
 /**
  * Contains list of reducers
@@ -9,6 +10,7 @@ import SettingsReducer from './slices/SettingsSlice'
 const reducers = combineReducers({
     Home: HomeReducer,
     Settings: SettingsReducer,
+    Peripherals: BTPeripheralReducer
 });
 
 export const Store = configureStore({

@@ -1,6 +1,13 @@
-const AppConstants = {
-    dark: 'dark',
-    light: 'light',
-}
+export const AppConstants = {
+  dark: 'dark',
+  light: 'light',
+};
 
-export default AppConstants;
+export const BluetoothState = {
+  Unknown: 'Unknown',
+  Resetting: 'Resetting',
+  Unsupported: 'Unsupported',
+  Unauthorized: 'Unauthorized',
+  PoweredOff: 'PoweredOff',
+  PoweredOn: 'PoweredOn',
+};
