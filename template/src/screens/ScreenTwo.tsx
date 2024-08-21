@@ -83,7 +83,7 @@ const ScreenTwo = ({navigation}: Props) => {
                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <Text>{item.rssi}</Text>
                 <Button
-                  title={isDeviceConnected ? 'Disconnect' : 'Connect'}
+                  title='Connect'
                   onPress={() =>
                     isDeviceConnected
                       ? disconnect(item.peripheralId)
